@@ -90,8 +90,7 @@ export default class OrganizationsPage extends BasePage {
     await this.locators.saveChangesButton.click();
     await this.page.waitForLoadState('networkidle');
 
-    // Save pachi app organization DETAIL page ma redirect huncha,
-    // list page ma pharkinu parcha table check garna
+    
     await this.page.goto('/organizations');
     await this.page.waitForLoadState('networkidle');
   }
