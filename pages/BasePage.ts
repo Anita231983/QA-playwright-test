@@ -8,8 +8,6 @@ export default abstract class BasePage{
   }
 
   async navigateToChairlyo(url:string){
-    await this.page.goto(url);
+    await this.page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
   }
 }
-
-

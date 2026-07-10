@@ -26,6 +26,7 @@ export default class LoginPage extends BasePage {
     await this.fillEmail(email);
     await this.fillPassword(password);
     await this.clickLoginButton();
+    await this.page.waitForLoadState('networkidle');
   }
 
   async verifyLoginSuccess() {

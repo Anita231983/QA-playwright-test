@@ -1,7 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 
 export default class DashboardLocators {
-  readonly welcomeText: Locator;
   readonly dashboardLink: Locator;
   readonly organizationsLink: Locator;
   readonly plansAndPricingLink: Locator;
@@ -17,7 +16,6 @@ export default class DashboardLocators {
   readonly expiringSoonCard: Locator;
 
   constructor(page: Page) {
-    this.welcomeText = page.getByText('Rise and shine, System');
     this.dashboardLink = page.getByRole('link', { name: 'Dashboard' });
     this.organizationsLink = page.getByRole('link', { name: 'Organizations' });
     this.plansAndPricingLink = page.getByRole('link', { name: 'Plans & Pricing' });
@@ -33,26 +31,3 @@ export default class DashboardLocators {
     this.expiringSoonCard = page.getByText('Expiring Soon');
   }
 }
-
-// import { Locator, Page } from '@playwright/test';
-
-// export default class DashboardLocators {
-//   readonly welcomeText: Locator;
-//   readonly sidebarMenu: Locator;
-//   readonly dashboardLink: Locator;
-//   readonly organizationsLink: Locator;
-//   readonly plansAndPricingLink: Locator;
-//   readonly logoutButton: Locator;
-//   readonly userProfileIcon: Locator;
-
-//   constructor(page: Page) {
-//     // तपाईंको actual dashboard को structure अनुसार यी locator adjust गर्नुपर्ला
-//     this.welcomeText = page.getByText(/Good morning|Good afternoon|Good evening/i);
-//     this.sidebarMenu = page.locator('nav');
-//     this.dashboardLink = page.getByRole('link', { name: 'Dashboard' });
-//     this.organizationsLink = page.getByRole('link', { name: 'Organizations' });
-//     this.plansAndPricingLink = page.getByRole('link', { name: 'Plans & Pricing' });
-//     this.logoutButton = page.getByRole('button', { name: 'Logout' });
-//     this.userProfileIcon = page.locator('[data-testid="user-profile"]');
-//   }
-// }

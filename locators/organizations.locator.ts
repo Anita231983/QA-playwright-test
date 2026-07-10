@@ -38,6 +38,7 @@ export default class OrganizationsLocators {
   readonly statusDropdown: Locator;
   readonly browseFilesButton: Locator;
   readonly planTypeDropdown: Locator;
+  readonly trialDaysInput: Locator;
   readonly timezoneDropdown: Locator;
   readonly timezoneSearchInput: Locator;
 
@@ -78,7 +79,6 @@ export default class OrganizationsLocators {
 
     // Add Organization form - header
     this.addOrgFormTitle = page.getByRole('heading', { name: 'Add Organization' });
-    // DevTools बाट confirm भएको: role=button, class मा rounded-xl h-9 w-9 border-neutral-200
     this.backButton = page.locator('button.rounded-xl.h-9.w-9');
     this.saveChangesButton = page.getByRole('button', { name: 'Save Changes' });
     this.cancelButton = page.getByRole('button', { name: 'Cancel' });
@@ -89,8 +89,9 @@ export default class OrganizationsLocators {
     this.statusDropdown = page.getByText('e.g Trial');
     this.browseFilesButton = page.getByRole('button', { name: 'Browse Files' });
     this.planTypeDropdown = page.getByText('e.g Monthly');
+    this.trialDaysInput = page.getByPlaceholder('e.g. 10');
     this.timezoneDropdown = page.getByText('Kathmandu (+05:45)');
-    this.timezoneSearchInput = page.getByPlaceholder('Search city or region...');
+    this.timezoneSearchInput = page.getByPlaceholder(/search city/i);
 
     // Add Organization form - Main Admin Details
     this.firstNameInput = page.getByPlaceholder('e.g. Obin Bade');
@@ -98,56 +99,8 @@ export default class OrganizationsLocators {
     this.emailInput = page.getByPlaceholder('e.g. obin@gmail.com');
     this.passwordInput = page.locator('input[type="password"]');
     this.countryCodeDropdown = page.locator('button').filter({ hasText: '+977' });
-    this.phoneInput = page.locator('input[type="tel"]');
-    // DevTools बाट confirm भएको: role="switch"
+    this.phoneInput = page.locator('label:has-text("Phone")').locator('..').locator('input');
+
     this.enableEmailNotificationsToggle = page.getByRole('switch');
   }
 }
-
-// import { Locator, Page } from '@playwright/test';
-
-// export default class OrganizationsLocators {
-//   // Create
-//   readonly addOrganizationButton: Locator;
-//   readonly organizationNameInput: Locator;
-//   readonly saveButton: Locator;
-
-//   // Edit
-//   readonly editButton: Locator;
-//   readonly updateButton: Locator;
-
-//   // Delete
-//   readonly deleteButton: Locator;
-//   readonly confirmDeleteButton: Locator;
-
-//   // Search
-//   readonly searchInput: Locator;
-
-//   // Table/List
-//   readonly organizationTable: Locator;
-//   readonly organizationRow: Locator;
-//   readonly organizationNameCell: Locator;
-
-//   constructor(page: Page) {
-//     // Create
-//     this.addOrganizationButton = page.getByRole('button', { name: 'Add Organization' });
-//     this.organizationNameInput = page.locator('[name="organizationName"]');
-//     this.saveButton = page.getByRole('button', { name: 'Save' });
-
-//     // Edit
-//     this.editButton = page.getByRole('button', { name: 'Edit' });
-//     this.updateButton = page.getByRole('button', { name: 'Update' });
-
-//     // Delete
-//     this.deleteButton = page.getByRole('button', { name: 'Delete' });
-//     this.confirmDeleteButton = page.getByRole('button', { name: 'Confirm' });
-
-//     // Search
-//     this.searchInput = page.getByPlaceholder('Search organizations');
-
-//     // Table/List
-//     this.organizationTable = page.locator('table');
-//     this.organizationRow = page.locator('table tbody tr');
-//     this.organizationNameCell = page.locator('table tbody tr td:first-child');
-//   }
-// }
