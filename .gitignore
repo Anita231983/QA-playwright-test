@@ -21,3 +21,5 @@ results/
 .env
 .env.local
 .env.*.local
+tests/
+package-lock.json/
