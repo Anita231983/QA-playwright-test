@@ -12,7 +12,7 @@ export class AuthService {
       remember_me: true,
     });
 
-    expect(response.ok(), `Login failed: ${response.status()} ${await response.text()}`);
+    expect(response.ok(), `Login failed: ${response.status()} ${await response.text()}`).toBeTruthy();
 
     const body = await response.json();
     const token: string = body.access;
